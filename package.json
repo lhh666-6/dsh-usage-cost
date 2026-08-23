@@ -1,0 +1,103 @@
+{
+  "name": "dsh-usage-cost",
+  "version": "0.1.0",
+  "description": "Real-time DeepSeek token usage and cost meter: a status-bar capsule plus detail panel driven by a session projection, with local-only today/month/model cost persistence.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./types": "./src/types.ts",
+    "./client": "./lib/client.js",
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "cordis.yml",
+    "lib/index.js",
+    "lib/client.js",
+    "src/",
+    "LICENSE",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.client.json --noEmit",
+    "test": "vitest run",
+    "bundle": "tsdown",
+    "watch": "tsdown --watch",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "dependencies": {
+    "gpt-tokenizer": "^2.8.1",
+    "zod": "^4.0.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-client-runtime": "*",
+    "@deepseek-ai/dsh-client-ui-conversation": "*",
+    "@deepseek-ai/dsh-client-ui-slots": "*",
+    "@deepseek-ai/dsh-home-paths": "*",
+    "@deepseek-ai/dsh-llm": "*",
+    "@deepseek-ai/dsh-session": "*",
+    "@deepseek-ai/dsh-session-projection": "*",
+    "@deepseek-ai/dsh-settings": "*",
+    "@deepseek-ai/schemastery": "*",
+    "react": "*"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-client-runtime": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-client-ui-slots": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-home-paths": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-llm": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-session": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-session-projection": "0.1.0-rc.6",
+    "@deepseek-ai/dsh-settings": "0.1.0-rc.6",
+    "@deepseek-ai/schemastery": "^3.18.1",
+    "@types/node": "^22.20.0",
+    "@types/react": "^18.3.1",
+    "react": "^18.2.0",
+    "tsdown": "^0.22.0",
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.10"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lhh666-6/dsh-usage-cost.git"
+  },
+  "homepage": "https://github.com/lhh666-6/dsh-usage-cost",
+  "bugs": {
+    "url": "https://github.com/lhh666-6/dsh-usage-cost/issues"
+  },
+  "author": "lhh666-6",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "usage",
+    "cost",
+    "token",
+    "price"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,12 @@
+# dsh-usage-cost bundle patch: one dual-face Host row.
+#
+# The bundle patch is a top-level YAML ARRAY of loader patch entries (same
+# shape as the profile's cordis.patch.yml and every dsh-*.patch layer). The
+# `insert` entry appends this row to the composed tree. The row's package
+# default export is the Host plugin; its `dsh.client` manifest (package.json)
+# makes the SAME entry discoverable to the Web client module graph, so no
+# separate client row is needed.
+
+- insert:
+    - id: usage-cost
+      name: dsh-usage-cost
